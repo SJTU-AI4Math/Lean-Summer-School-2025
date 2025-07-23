@@ -1,0 +1,901 @@
+\documentclass[UTF8]{ctexart}
+
+% font packages
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+
+% margin
+\usepackage{geometry}
+\geometry{
+    paper =a4paper,
+    top =3cm,
+    bottom =3cm,
+    left=2cm,
+    right =2cm
+}
+\linespread{1.2}
+
+% more math operators' support
+\usepackage{physics}
+
+% Boldface
+\usepackage{bm}
+
+% Tikz
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+% Gaussian Elimination
+\usepackage{gauss}
+
+% Commutative Graph
+\usepackage[all]{xy}
+
+% Comment
+\usepackage{comment}
+
+% Colors
+\usepackage{xcolor}
+
+% 文字颜色的命令
+\newcommand{\tc}[4][white]{{\fcolorbox{#1}{#2}{\textcolor{#3}{#4}}}} % 此命令接受四个参数，第一个参数为边框颜色，默认为白色，第二个参数为文字背景颜色，第三个参数为文字颜色，第四个参数为文字内容。如：\tc[green]{blue}{lime}{Hello,world!}
+
+% Reference support
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan
+} % 请在此处自定义链接的颜色，相当于\textcolor
+
+% Info
+\title{Title}
+\author{Fulcrum4Math}
+\date{\today}
+
+% General
+\DeclareMathOperator{\N}{\mathbb{N}}                    % Set of Natural Numbers
+\DeclareMathOperator{\Z}{\mathbb{Z}}                    % Set of Integers
+\DeclareMathOperator{\Q}{\mathbb{Q}}                    % Set of Rational Numbers
+\DeclareMathOperator{\R}{\mathbb{R}}                    % Set of Real Numbers
+\DeclareMathOperator{\C}{\mathbb{C}}                    % Set of Complex Numbers
+
+\DeclareMathOperator{\Id}{Id}                           % Identity
+
+\DeclareMathOperator{\Ker}{Ker}                         % Kernel of a Homomorphism ($\ker$ is included in package amsmath)
+\DeclareMathOperator{\Image}{Im}                        % Image of a mapping
+
+% Mathematical Logic
+\DeclareMathOperator{\true}{\mathbb{T}}                    % Tautology
+\DeclareMathOperator{\false}{\mathbb{F}}                    % Contradictory Formula
+% Set Theory
+\DeclareMathOperator{\PP}{\mathcal{P}}                  % Power Sets
+\DeclareMathOperator{\card}{card}                       % Cardinality
+
+% Category Theory
+\DeclareMathOperator{\Cat}{\mathcal{C}}                 % Category
+
+\DeclareMathOperator{\Hom}{Hom}                         % Set of Homomorphisms
+\DeclareMathOperator{\End}{End}                         % Set of Endomorphisms
+\DeclareMathOperator{\Aut}{Aut}                         % Set of Automorphisms
+\DeclareMathOperator{\Isom}{Isom}                       % Set of Isomorphisms
+
+\DeclareMathOperator{\Ob}{Ob}                           % Objects of a Category
+\DeclareMathOperator{\Mor}{Mor}                         % Morphisms of a Category
+
+% Abstract Algebra
+
+\DeclareMathOperator{\stab}{stab}
+
+% Topology
+\DeclareMathOperator{\T}{\mathcal{T}}                   % Topology
+
+\DeclareMathOperator{\intr}{int}                        % Interior
+\DeclareMathOperator{\cl}{cl}                           % Closure
+
+\DeclareMathOperator{\U}{\overset{\circ}{\mathit{U}}}   % Deleted Neighbourhood
+
+% Linear Algebra
+
+% \rank is included in package physics.
+% \tr is included in package physics.
+
+\DeclareMathOperator{\K}{\mathbb{K}}                    % Number Field
+\DeclareMathOperator{\F}{\mathbb{F}}                    % Number Field (F)
+
+\DeclareMathOperator{\diag}{\text{diag}}                % Diagonal Matrix
+\DeclareMathOperator{\al}{\bm\alpha}                    % Boldfaced vector alpha
+\DeclareMathOperator{\bt}{\bm\beta}                     % Boldfaced vector beta
+\DeclareMathOperator{\x}{\bm{x}}                        % Boldfaced vector x
+\DeclareMathOperator{\0}{\mathbf{0}}                    % Boldfaced vector x
+
+\newcommand{\Jd}[2]{\mathrm{J}_{#1}{(#2)}}              % Jordan Blocks
+
+% \DeclareMathOperator{\A}{\bm{A}}                    % Boldfaced matrix A
+% \DeclareMathOperator{\B}{\bm{B}}                    % Boldfaced matrix B
+% \DeclareMathOperator{\Cc}{\bm{C}}                   % Boldfaced matrix C
+
+\DeclareMathOperator{\CCol}{Col}                        % Column Space
+\DeclareMathOperator{\RRow}{Row}                        % Row Space
+\DeclareMathOperator{\Null}{Null}                       % Null Space
+\DeclareMathOperator{\rmT}{\mathrm{T}}                  % Transpose
+
+\newcommand{\spn}{\mathrm{span}\text{ }}             % Span
+% The original command `\span` leads to the environment `align` misdirected.
+
+\DeclareMathOperator{\adj}{adj}                         % adj Matrix
+
+\newcommand{\GL}[2]{\mathrm{GL}_{#1}(#2)}               % General Linear Group
+\newcommand{\SL}[2]{\mathrm{SL}_{#1}(#2)}               % Special Linear Group
+
+\DeclareMathOperator{\lcm}{lcm}                         % LCM
+
+\newcommand{\<}{\langle}                                
+\renewcommand{\>}{\rangle}                              % These two for ordinary Hilbert Inner Products <x,y>
+\newcommand{\inprod}[2]{\<#1,#2\>}    % Using $\expval{#1}$ (Included in package physics) can replace \<#1\>.
+\newcommand{\ocinterval}[2]{\left(#1,#2\right]}
+\newcommand{\cointerval}[2]{\left[#1,#2\right)}
+\newcommand{\ccinterval}[2]{\left[#1,#2\right]}
+\newcommand{\oointerval}[2]{\left(#1,#2\right)}
+
+% Mathematical Analysis
+
+\DeclareMathOperator*{\ulim}{\overline{\lim}}
+\DeclareMathOperator*{\llim}{\underline{\lim}}
+\newcommand{\diff}[3]{\left. #1 \right|_{#2}^{#3}}    % This command can be replaced by $\eval{#1}_{#2}^{#3}$ in package physics.
+
+\newcommand{\Ball}[2]{\mathcal{B}\left(#1,#2\right)}	% Open Ball
+
+% Theorem template below copied from https://zhuanlan.zhihu.com/p/763738880
+
+% ————————————————————————————————————自定义颜色————————————————————————————————————
+\definecolor{dfn_green1}{RGB}{0, 156, 39} % 深绿
+\definecolor{dfn_green2}{RGB}{214, 254, 224} % 浅绿
+
+\definecolor{thm_blue1}{RGB}{0, 91, 156} % 深蓝
+\definecolor{thm_blue2}{RGB}{218, 240, 255} % 浅蓝
+
+\definecolor{ppt_pink1}{RGB}{172, 0, 175} % 深粉
+\definecolor{ppt_pink2}{RGB}{255, 237, 255} % 浅粉
+
+\definecolor{crl_orange1}{RGB}{225, 124, 0} % 深橙
+\definecolor{crl_orange2}{RGB}{255, 235, 210} % 浅橙
+
+\definecolor{xmp_purple1}{RGB}{119, 0, 229} % 深紫
+\definecolor{xmp_purple2}{RGB}{239, 223, 255} % 浅紫
+
+\definecolor{cxmp_red1}{RGB}{211, 0, 35} % 深红
+\definecolor{cxmp_red2}{RGB}{255, 214, 220} % 浅红
+
+\definecolor{prf_grey1}{RGB}{120, 120, 120} % 深灰
+\definecolor{prf_grey2}{RGB}{233, 233, 233} % 浅灰
+
+\definecolor{axm_yellow1}{RGB}{192, 192, 0} % 深黄
+\definecolor{axm_yellow2}{RGB}{255, 255, 172} % 浅黄
+
+% 将RGB换为rgb，颜色数值取值范围改为0到1
+% ————————————————————————————————————自定义颜色————————————————————————————————————
+
+% ————————————————————————————————————盒子设置————————————————————————————————————
+
+\usepackage{tcolorbox} % 盒子效果
+\tcbuselibrary{most} % tcolorbox宏包的设置，详见宏包说明文档
+
+% tolorbox提供了tcolorbox环境，其格式如下：
+% 第一种格式：\begin{tcolorbox}[colback=⟨背景色⟩, colframe=⟨框线色⟩, arc=⟨转角弧度半径⟩, boxrule=⟨框线粗⟩]   \end{tcolorbox}
+% 其中设置arc=0mm可得到直角；boxrule可换为toprule/bottomrule/leftrule/rightrule可分别设置对应边宽度，但是设置为0mm时仍有细边，若要绘制单边框线推荐使用第二种格式
+% 方括号内加上title=⟨标题⟩, titlerule=⟨标题背景线粗⟩, colbacktitle=⟨标题背景线色⟩可为盒子加上标题及其背景线
+% 第二种格式：\begin{tcolorbox}[enhanced, colback=⟨背景色⟩, boxrule=0pt, frame hidden, borderline={⟨框线粗⟩}{⟨偏移量⟩}{⟨框线色⟩}]   {\end{tcolorbox}}
+% 将borderline换为borderline east/borderline west/borderline north/borderline south可分别为四边添加框线，同一边可以添加多条
+% 加入breakable属性可以支持盒子拆分到两页中。
+% 偏移量为正值时，框线向盒子内部移动相应距离，负值反之
+
+\newenvironment{dfn_box}{
+    \begin{tcolorbox}[enhanced, colback=dfn_green2, boxrule=0pt, frame hidden,
+        borderline west={0.7mm}{0.1mm}{dfn_green1},breakable]
+    }
+    {\end{tcolorbox}}
+    
+\newenvironment{thm_box}{
+    \begin{tcolorbox}[enhanced, colback=thm_blue2, boxrule=0pt, frame hidden,
+        borderline west={0.7mm}{0.1mm}{thm_blue1},breakable]
+    }
+    {\end{tcolorbox}}
+    
+\newenvironment{ppt_box}{
+    \begin{tcolorbox}[enhanced, colback=ppt_pink2, boxrule=0pt, frame hidden,
+        borderline west={0.7mm}{0.1mm}{ppt_pink1},breakable]
+    }
+    {\end{tcolorbox}}
+    
+\newenvironment{crl_box}{
+    \begin{tcolorbox}[enhanced, colback=crl_orange2, boxrule=0pt, frame hidden,
+        borderline west={0.7mm}{0.1mm}{crl_orange1},breakable]
+    }
+    {\end{tcolorbox}}
+    
+\newenvironment{xmp_box}{
+    \begin{tcolorbox}[enhanced, colback=xmp_purple2, boxrule=0pt, frame hidden,
+        borderline west={0.7mm}{0.1mm}{xmp_purple1},breakable]
+    }
+    {\end{tcolorbox}}
+    
+\newenvironment{cxmp_box}{
+    \begin{tcolorbox}[enhanced, colback=cxmp_red2, boxrule=0pt, frame hidden,
+        borderline west={0.7mm}{0.1mm}{cxmp_red1},breakable]
+    }
+    {\end{tcolorbox}}
+    
+\newenvironment{prf_box}{
+    \begin{tcolorbox}[enhanced, colback=prf_grey2, boxrule=0pt, frame hidden,
+        borderline west={0.7mm}{0.1mm}{prf_grey1},breakable]
+    }
+    {\end{tcolorbox}}
+    
+\newenvironment{axm_box}{
+    \begin{tcolorbox}[enhanced, colback=axm_yellow2, boxrule=0pt, frame hidden,
+        borderline west={0.7mm}{0.1mm}{axm_yellow1},breakable]
+    }
+    {\end{tcolorbox}}
+
+% tcolorbox宏包还提供了\tcbox指令，用于生成行内盒子，可制作高光效果
+
+        % \newcommand{\hl}[1]{
+        %     \tcbox[on line, arc=0pt, colback=hlan!5!white, colframe=hlan!5!white, boxsep=1pt, left=1pt, right=1pt, top=1.5pt, bottom=1.5pt, boxrule=0pt]
+        % {\bfseries \color{hlan}#1}}
+
+% 其中on line将盒子放置在本行（缺失会跳到下一行），boxsep用于控制文本内容和边框的距离，left、right、top、bottom则分别在boxsep的参数的基础上分别控制四边距离
+
+% ————————————————————————————————————盒子设置————————————————————————————————————
+
+% ————————————————————————————————————定理类环境设置————————————————————————————————————
+\newtheoremstyle{MyStyle}{0pt}{}{}{\parindent}{\bfseries}{}{1em}{} % 定义新定理风格。格式如下：
+%\newtheoremstyle{⟨风格名⟩}
+%                {⟨上方间距⟩} % 若留空，则使用默认值
+%                {⟨下方间距⟩} % 若留空，则使用默认值
+%                {⟨主体字体⟩} % 如 \itshape
+%                {⟨缩进长度⟩} % 若留空，则无缩进；可以使用 \parindent 进行正常段落缩进
+%                {⟨定理头字体⟩} % 如 \bfseries
+%                {⟨定理头后的标点符号⟩} % 如点号、冒号
+%                {⟨定理头后的间距⟩} % 不可留空，若设置为 { }，则表示正常词间间距；若设置为 {\newline}，则环境内容开启新行
+%                {⟨定理头格式指定⟩} % 一般留空
+% 定理风格决定着由 \newtheorem 定义的环境的具体格式，有三种定理风格是预定义的，它们分别是：
+% plain: 环境内容使用意大利斜体，环境上下方添加额外间距
+% definition: 环境内容使用罗马正体，环境上下方添加额外间距
+% remark: 环境内容使用罗马正体，环境上下方不添加额外间距
+
+\theoremstyle{MyStyle} % 设置定理风格 
+
+% 定义定义环境，格式为\newtheorem{⟨环境名⟩}{⟨定理头文本⟩}[⟨上级计数器⟩]或\newtheorem{⟨环境名⟩}[⟨共享计数器⟩]{⟨定理头文本⟩}，其变体\newtheorem*不带编号
+
+% 以下的每个环境接受参数，请按顺序填入：
+% #1 环境标题（中文）
+
+\newtheorem{axiom}{公理}[section]
+\newenvironment{axm}[2]
+{
+    \begin{axm_box}
+        \begin{axiom}
+            \textbf{#1
+                \ifx\relax#2\relax\else % 检查 #2 是否为空
+                    (#2) % 如果 #2 不为空，渲染 [空格](#2)
+                \fi}
+            \newline
+}
+{
+        \end{axiom}
+    \end{axm_box}
+}
+
+\newtheorem{definition}{定义}[subsection]
+\newenvironment{dfn}[2]
+{
+    \begin{dfn_box}
+        \begin{definition}
+            \textbf{#1
+                \ifx\relax#2\relax\else % 检查 #2 是否为空
+                    (#2) % 如果 #2 不为空，渲染 [空格](#2)
+                \fi}
+            \newline
+}
+{
+        \end{definition}
+    \end{dfn_box}
+}
+
+\newtheorem{concept}[definition]{概念}
+\newenvironment{cpt}[1]
+{
+    \begin{dfn_box}
+        \begin{concept}
+            \textbf{#1}
+            \newline
+}
+{
+        \end{concept}
+    \end{dfn_box}
+}
+
+\newtheorem{syntax}[definition]{语法}
+\newenvironment{syn}[1]
+{
+    \begin{thm_box}
+        \begin{syntax}
+            \textbf{#1}
+            \newline
+}
+{
+        \end{syntax}
+    \end{thm_box}
+}
+
+\newtheorem{theorem}[definition]{定理}
+\newenvironment{thm}[2]
+{
+    \begin{thm_box}
+        \begin{theorem}
+            \textbf{#1
+                \ifx\relax#2\relax\else % 检查 #2 是否为空
+                    (#2) % 如果 #2 不为空，渲染 [空格](#2)
+                \fi}
+            \newline
+}
+{
+        \end{theorem}
+    \end{thm_box}
+}
+
+\newtheorem{mytactic}{策略}
+\newenvironment{tactic}[1]
+{
+    \begin{thm_box}
+        \begin{mytactic}
+            \textbf{#1}
+            \newline
+}
+{
+        \end{mytactic}
+    \end{thm_box}
+}
+
+\newtheorem{myvariation}{Tactic 变体}[definition]
+\newenvironment{tacticvar}[1]
+{
+    \begin{ppt_box}
+        \begin{myvariation}
+            \textbf{#1}
+            \newline
+}
+{
+        \end{myvariation}
+    \end{ppt_box}
+}
+
+\newtheorem{example}{ 例\, }[subsection]
+\newenvironment{xmp}[1]
+{
+    \begin{xmp_box}
+        \begin{example}
+            \textbf{#1}
+            \newline
+}
+{
+        \end{example}
+    \end{xmp_box}
+}
+
+\newtheorem{cexample}{反例}[subsection]
+\newenvironment{cxmp}[1]
+{
+    \begin{cxmp_box}
+        \begin{cexample}
+            \textbf{#1}
+            \newline
+}
+{
+        \end{cexample}
+    \end{cxmp_box}
+}
+
+\newtheorem*{myproof}{证明: \newline}
+\newenvironment{prf}{\begin{prf_box}\begin{myproof}}{\end{myproof}\end{prf_box}}
+
+\newenvironment{crs}[4]
+{
+    \begin{thm_box}
+        \textbf{课程 #1: #2}
+        
+        \ifx\relax#3\relax\else % 检查 #3 是否为空
+            \textbf{主讲: }#3 % 如果 #3 不为空，渲染 [空格](#3)
+        \fi
+        
+        \ifx\relax#4\relax\else % 检查 #4 是否为空
+            \textbf{课程材料: }#4 % 如果 #4 不为空，渲染 [空格](#4)
+        \fi
+
+        \textbf{主要内容: }
+}
+{
+    \end{thm_box}
+}
+
+\newtheorem{project}{课题}
+\newenvironment{prj}[1]
+{
+    \begin{xmp_box}
+        \begin{project}
+            \textbf{#1}
+            \newline
+}
+{
+        \end{project}
+    \end{xmp_box}
+}
+
+\usepackage{listings}
+\newcommand{\smallsec}[1]{\paragraph{#1.}}
+\lstset{
+    basicstyle = \ttfamily,
+}
+
+% Define Colors: 
+\definecolor{leanblue}{RGB}{0,0,255}
+\colorlet{keyword}{leanblue}
+\colorlet{punct}{leanblue}
+
+\definecolor{sorry}{RGB}{255,0,0}
+\definecolor{comment}{RGB}{0,128,0}
+\definecolor{string}{RGB}{163,21,21}
+\definecolor{num}{RGB}{9,134,88}
+
+\definecolor{thname}{RGB}{121,94,38}
+
+\definecolor{background}{HTML}{EEEEEE}
+\definecolor{delim}{RGB}{20,105,176}
+
+\newcommand*{\lean}[1]{\texttt{\color{blue}#1}}
+
+\lstdefinelanguage{lean}{
+    % Define Keywords: 
+    alsoletter = {\#},
+    keywords = {
+        import, 
+        namespace, 
+        open, 
+        variable, 
+        Prop, 
+        Type, 
+        % Declarations: 
+        protected, 
+        class, 
+        instance, 
+        def, 
+        axiom, 
+        example, 
+        theorem, 
+        lemma, 
+        fun, 
+        by, 
+        % Basics: 
+        \#check, 
+        \#leansearch, 
+        \#eval, 
+        % Tactics: 
+        exact, 
+            % FOL: 
+            intro,
+            intros, 
+            rintro, 
+            apply,
+            apply?, 
+            constructor, 
+            rcases, 
+            obtain, 
+            use, 
+            left, 
+            right, 
+            cases, 
+            case, 
+            by\_cases, 
+            by\_contra, 
+            contrapose, 
+            contrapose!,
+            % Others: 
+            symm, 
+            calc, 
+            unfold, 
+            have, 
+            let, 
+            rw, 
+            at, 
+            change, 
+            show, 
+        }, 
+    keywords = [2]{sorry}, 
+    %
+    numbers=left,
+    numberstyle=\color{num},
+    %
+    % morecomment = [l]{--},
+    moredelim=[l][\color{comment}]{--}, % morecomment -> moredelim, so that Unicode characters can be used in comments. 
+    moredelim=[is][\color{thname}]{\#tm\{}{\}}, 
+    morecomment = [s]{/-}{-/},
+    commentstyle = \color{comment}, 
+    %
+    stringstyle = \color{string}, 
+    %
+    stepnumber=1,
+    numbersep=8pt,
+    showstringspaces=false,
+    breaklines=true,
+    frame=lines,
+    backgroundcolor=\color{background},
+    literate=
+    % Keywords
+        {th\_name}{{{\color{thname}th\_name}}}{7}
+    % Math Symbols
+        {ℕ}{{\ensuremath{\mathbb{N}}}}{1}
+        {ℤ}{{\ensuremath{\mathbb{Z}}}}{1}
+        {ℝ}{{\ensuremath{\mathbb{R}}}}{1}
+        {ℚ}{{\ensuremath{\mathbb{Q}}}}{1}
+        {ℂ}{{\ensuremath{\mathbb{C}}}}{1}
+        {∩}{{\ensuremath{\cap}}}{1}
+        {∪}{{\ensuremath{\cup}}}{1}
+        {⊂}{{\ensuremath{\subseteq}}}{1}
+        {⊆}{{\ensuremath{\subseteq}}}{1}
+        {⊄}{{\ensuremath{\nsubseteq}}}{1}
+        {⊈}{{\ensuremath{\nsubseteq}}}{1}
+        {⊃}{{\ensuremath{\supseteq}}}{1}
+        {⊇}{{\ensuremath{\supseteq}}}{1}
+        {⊅}{{\ensuremath{\nsupseteq}}}{1}
+        {⊉}{{\ensuremath{\nsupseteq}}}{1}
+        {∈}{{\ensuremath{\in}}}{1}
+        {∉}{{\ensuremath{\notin}}}{1}
+        {∋}{{\ensuremath{\ni}}}{1}
+        {∌}{{\ensuremath{\notni}}}{1}
+        {∅}{{\ensuremath{\emptyset}}}{1}
+        {∫}{{\ensuremath{\int}}}{1}
+        {∑}{{\ensuremath{\mathrm{\Sigma}}}}{1}
+        {Π}{{\ensuremath{\mathrm{\Pi}}}}{1}
+        {≤}{{\ensuremath{\leq}}}{1}
+        {≥}{{\ensuremath{\geq}}}{1}
+        {≠}{{\ensuremath{\neq}}}{1}
+        {≈}{{\ensuremath{\approx}}}{1}
+        {≡}{{\ensuremath{\equiv}}}{1}
+        {≃}{{\ensuremath{\simeq}}}{1}
+    % Greek Letters lowercase
+        {α}{{\ensuremath{\mathrm{\alpha}}}}{1}
+        {β}{{\ensuremath{\mathrm{\beta}}}}{1}
+        {γ}{{\ensuremath{\mathrm{\gamma}}}}{1}
+        {δ}{{\ensuremath{\mathrm{\delta}}}}{1}
+        {ε}{{\ensuremath{\mathrm{\varepsilon}}}}{1}
+        {ζ}{{\ensuremath{\mathrm{\zeta}}}}{1}
+        {η}{{\ensuremath{\mathrm{\eta}}}}{1}
+        {θ}{{\ensuremath{\mathrm{\theta}}}}{1}
+        {ι}{{\ensuremath{\mathrm{\iota}}}}{1}
+        {κ}{{\ensuremath{\mathrm{\kappa}}}}{1}
+        {μ}{{\ensuremath{\mathrm{\mu}}}}{1}
+        {ν}{{\ensuremath{\mathrm{\nu}}}}{1}
+        {ξ}{{\ensuremath{\mathrm{\xi}}}}{1}
+        {π}{{\ensuremath{\mathrm{\mathnormal{\pi}}}}}{1}
+        {ρ}{{\ensuremath{\mathrm{\rho}}}}{1}
+        {σ}{{\ensuremath{\mathrm{\sigma}}}}{1}
+        {τ}{{\ensuremath{\mathrm{\tau}}}}{1}
+        {φ}{{\ensuremath{\mathrm{\varphi}}}}{1}
+        {χ}{{\ensuremath{\mathrm{\chi}}}}{1}
+        {ψ}{{\ensuremath{\mathrm{\psi}}}}{1}
+        {ω}{{\ensuremath{\mathrm{\omega}}}}{1}
+    % Greek Letters UPPERCASE
+        {Γ}{{\ensuremath{\mathrm{\Gamma}}}}{1}
+        {Δ}{{\ensuremath{\mathrm{\Delta}}}}{1}
+        {Θ}{{\ensuremath{\mathrm{\Theta}}}}{1}
+        {Λ}{{\ensuremath{\mathrm{\Lambda}}}}{1}
+        {Σ}{{\ensuremath{\mathrm{\Sigma}}}}{1}
+        {Φ}{{\ensuremath{\mathrm{\Phi}}}}{1}
+        {Ξ}{{\ensuremath{\mathrm{\Xi}}}}{1}
+        {Ψ}{{\ensuremath{\mathrm{\Psi}}}}{1}
+        {Ω}{{\ensuremath{\mathrm{\Omega}}}}{1}
+    % Arrows
+        {↦}{{\ensuremath{\mapsto}}}{1}
+        {←}{{\ensuremath{\leftarrow}}}{1}
+        {<-}{{\ensuremath{\leftarrow}}}{1}
+        {→}{{\ensuremath{\rightarrow}}}{1}
+        {->}{{\ensuremath{\rightarrow}}}{1}
+        {↔}{{\ensuremath{\leftrightarrow}}}{1}
+        {<->}{{\ensuremath{\leftrightarrow}}}{1}
+        {⇒}{{\ensuremath{\Rightarrow}}}{1}
+        {⟹}{{\ensuremath{\Longrightarrow}}}{1}
+        {⇐}{{\ensuremath{\Leftarrow}}}{1}
+        {⟸}{{\ensuremath{\Longleftarrow}}}{1}
+        {Σ}{{\ensuremath{\Sigma}}}{1}
+        {Π}{{\ensuremath{\Pi}}}{1}
+        {∀}{{\ensuremath{\forall}}}{1}
+        {∃}{{\ensuremath{\exists}}}{1}
+        {λ}{{\ensuremath{\mathrm{\lambda}}}}{1}
+        {∧}{{\ensuremath{\wedge}}}{1}
+        {∨}{{\ensuremath{\vee}}}{1}
+        {¬}{{\ensuremath{\neg}}}{1}
+        {⊢}{{\ensuremath{\vdash}}}{1}
+        {‖}{{\ensuremath{\|}}}{1}
+    % subscripts
+        {₁}{{\ensuremath{_1}}}{1}
+        {₂}{{\ensuremath{_2}}}{1}
+        {₃}{{\ensuremath{_3}}}{1}
+        {₄}{{\ensuremath{_4}}}{1}
+        {₅}{{\ensuremath{_5}}}{1}
+        {₆}{{\ensuremath{_6}}}{1}
+        {₇}{{\ensuremath{_7}}}{1}
+        {₈}{{\ensuremath{_8}}}{1}
+        {₉}{{\ensuremath{_9}}}{1}
+        {₀}{{\ensuremath{_0}}}{1}
+        {ᵢ}{{\ensuremath{_i}}}{1}
+        {ⱼ}{{\ensuremath{_j}}}{1}
+        {ₐ}{{\ensuremath{_a}}}{1}
+        {⁻¹}{{\ensuremath{^{-1}}}}{1}
+        {¹}{{\ensuremath{^1}}}{1}
+        {ₙ}{{\ensuremath{_n}}}{1}
+        {ₘ}{{\ensuremath{_m}}}{1}
+        {ₚ}{{\ensuremath{_p}}}{1}
+    % Others
+        {↑}{{\ensuremath{\uparrow}}}{1}
+        {↓}{{\ensuremath{\downarrow}}}{1}
+        {⊢}{{\ensuremath{\vdash}}}{1}
+        {|-}{{\ensuremath{\vdash}}}{1}
+        {⊥}{{\ensuremath{\perp}}}{1}
+        {∞}{{\ensuremath{\infty}}}{1}
+        {∂}{{\ensuremath{\partial}}}{1}
+        {√}{{\ensuremath{\sqrt}}}{1}
+        {∘}{{\ensuremath{\circ}}}{1}
+        {×}{{\ensuremath{\times}}}{1}
+        {∆}{{\ensuremath{\triangle}}}{1}
+        {⟨}{{\ensuremath{\color{leanblue}\langle}}}{1}
+        {⟩}{{\ensuremath{\color{leanblue}\rangle}}}{1}
+        {⦃}{{\ensuremath{\color{leanblue}\{\!\mid}}}{1}
+        {⦄}{{\ensuremath{\color{leanblue}\mid\!\}}}}{1}
+        {ℒ}{{\ensuremath{\mathscr{L}}}}{1}
+        {𝒫}{{\ensuremath{\mathcal{P}}}}{1}
+        {·}{{\ensuremath{\cdot}}}{1},
+}
+
+\lstdefinestyle{lean}{
+    language=lean,
+    numbers=none, 
+    keywordstyle=\color{leanblue},
+    keywordstyle=[2]\color{sorry},
+    % frame=none,
+    backgroundcolor=\color{white}, 
+}
+
+\newcommand{\Goal}{\texttt{\,\color{leanblue}\ensuremath{\vdash}\,}}
+
+
+\begin{document}
+    \begin{center}
+        {\LARGE\textbf{2025 Lean 与数学形式化讲义(1A)}}
+
+        上海交通大学 AI4MATH 团队
+    \end{center}
+
+    \setcounter{section}{-1}
+    \section{相聚于东海之滨}
+        
+        \subsection{具体课程安排}
+            
+            \begin{center}
+                \begin{tabular}{|c|c|c|c|c|c|c|}
+                    \hline
+                     & 7/14 (一) & 7/15 (二) & 7/16 (三) & 7/17 (四) & 7/18 (五) & 7/19 (六) \\
+                    \hline
+                    9:30 -- 11:30 & 课程 1A & 校园参观 & 课程 3A & 课程 4A & 课题实践 & 课题展示\\
+                    \hline
+                    11:30 -- 15:00 & 午休 & 午休 & 午休 & 午休 & 午休 & 午休\\
+                    \hline
+                    15:00 -- 17:00 & 课程 1B & 课程 2B & 课程 3B & 课程 4B & 课题实践 & 课题展示\\
+                    \hline
+                    17:00 -- 18:00 & 晚休 & 晚休 & 晚休 & 晚休 & 晚休 & 晚休\\
+                    \hline
+                    18:00 -- 20:00 & 课程 1C & 课程 2C & 课程 3C & 课程 4C & 课题实践 & 机动\\
+                    \hline
+                \end{tabular}
+            \end{center}
+            
+            \textit{* 除校园参观外, 其他活动均在光彪楼 206 教室进行. }
+
+            \textit{* 午休时间和晚上 20:00 -- 21:00 可继续留在教室进行课题实践或答疑. }
+
+            \begin{crs}
+                {1A}
+                {相聚于东海之滨}
+                {刘晓洋}
+                {讲义 1A, 生活手册}
+                \begin{enumerate}
+                    \item 分发名牌; 
+                    \item 介绍具体课程安排与分组课题内容; 
+                    \item 形式化相关数学史介绍; 
+                    \item AI4Math 领域研究现状. 
+                \end{enumerate}
+            \end{crs}
+
+            \begin{crs}
+                {1B}
+                {初识 Lean}
+                {刘云天 (猫猫)}
+                {讲义 1B, MIL C02}
+                \begin{enumerate}
+                    \item 初识类型论; 
+                    \item 使用 Lean 进行形式化数学证明. 
+                \end{enumerate}
+            \end{crs}
+
+            \begin{crs}
+                {1C}
+                {一阶形式逻辑}
+                {刘云天 (猫猫)}
+                {讲义 1C, MIL C03, \texttt{1C.lean}}
+                \begin{enumerate}
+                    \item 使用 tactic 处理一阶形式逻辑命题; 
+                    \item 自然语言证明的形式化. 
+                \end{enumerate}
+            \end{crs}
+
+            \begin{crs}
+                {2A}
+                {校园参观}
+                {}
+                {生活手册}
+                \begin{enumerate}
+                    \item 参观校史馆; 
+                    \item 课题分组与组内破冰活动; 
+                    \item 幸运玩家可以提前试玩到猫猫精心设计的 Lean 桌游. 
+                \end{enumerate}
+            \end{crs}
+
+            \begin{crs}
+                {2B}
+                {朴素集合论}
+                {刘云天 (猫猫)}
+                {讲义 2B, MIL C04, Mathlib Explorer}
+                \begin{enumerate}
+                    \item Mathlib 简介与定理查找方法; 
+                    \item \texttt{Mathlib.Data.Set} 中朴素集合论的基本定义和定理. 
+                \end{enumerate}
+            \end{crs}
+
+            \begin{crs}
+                {2C}
+                {练习答疑}
+                {}
+                {讲义 1C + 2B, MIL C03 + C04}
+                \begin{enumerate}
+                    \item 完成 MIL C03 和 C04 两节的半数练习题; 
+                    \item 答疑. 
+                \end{enumerate}
+            \end{crs}
+
+            \begin{crs}
+                {3A}
+                {依值类型论}
+                {朱韬}
+                {讲义 3A, \texttt{3A.lean}}
+                \begin{enumerate}
+                    \item 依值类型论; 
+                    \item Lean 中项的构造语法; 
+                    \item Curry-Howard 同构. 
+                \end{enumerate}
+            \end{crs}
+
+            \begin{crs}
+                {3B}
+                {策略证明原理}
+                {朱韬}
+                {讲义 3B, \texttt{3B.lean}}
+                \begin{enumerate}
+                    \item 依值类型论视角下的基本策略介绍; 
+                    \item 策略的进阶用法. 
+                \end{enumerate}
+            \end{crs}
+
+            \begin{crs}
+                {3C}
+                {练习答疑}
+                {}
+                {之前各项讲义, MIL C03 + C04}
+                \begin{enumerate}
+                    \item 完成 MIL C03 和 C04 两节练习题; 
+                    \item 答疑. 
+                \end{enumerate}
+            \end{crs}
+
+            \begin{crs}
+                {4A}
+                {初等数论}
+                {王浩丞}
+                {讲义 4A, MIL C05, \texttt{4A.lean}}
+                Mathlib 中数论基础概念、核心定理、同余模运算、数论函数及经典问题. 
+            \end{crs}
+
+            \begin{crs}
+                {4B}
+                {抽象代数}
+                {王浩丞}
+                {讲义 4B, MIL C09, \texttt{4B.lean}}
+                Mathlib 中基础代数结构 (群, 环, 模) 的定义及相关应用. 
+            \end{crs}
+            
+            \begin{crs}
+                {4C}
+                {数学分析}
+                {白一凡}
+                {讲义 4C, MIL C12 + C13, \texttt{4C.lean}}
+                Mathlib 中极限定义, 度量空间与赋范空间, 连续线性算子, 简单微积分. 
+            \end{crs}
+
+        \subsection{课题内容}
+
+            我们提供两种课题形式: 分组课题和个人课题. 个人课题是作为分组课题的补充引入的, 除非真的特别社恐或者你真的对 Lean 已经了如指掌, 还是推荐大家参加分组课题. 
+
+            需要注意, 有些工作可能是前人从未完成过的, 或是前人做过却由于种种原因无人问津的事情. 在课题开展过程中可能会遇到各种各样难以预料的困难. 由于活动时间有限, 制定计划的时候一定先确定一个容易完成的核心目标, 例如证明定理的一些特例, 或是适当牺牲理论框架的泛用性等, 在有时间的情况下再考虑扩展内容. 相信与形式化领域有缘的人, 终会找到属于自己的方向并有所成就. 
+
+        \subsubsection{分组课题}
+            
+            \begin{prj}
+                {竞赛题证明形式化}
+                请选择一道高中竞赛及以上复杂度的数学题目, 将题干形式化后, 完成相应的形式化证明. 
+
+                以下建议供参考: 
+                \begin{enumerate}
+                    \item 选择题目的时候, 尽量选择涉及理论框架比较简单, 比较容易形式化描述的数论或不等式题目. 一些纯几何内容可能在 Mathlib 中没有对应的库, 而一些组合数学问题可能难以形式化, 这些会给形式化带来困难. 一些复杂的求和算子也可能难以处理. 
+                    \item 建议先用自然语言完成证明, 或者选择已有现成自然语言证明的题目, 在此基础上针对形式化进行表述上的优化, 这样可以省去从零开始解决问题的时间. 找到自然语言证明之后, 对其中涉及的各个算子和相关的关键定理在 Mathlib 库中进行查找, 确认它们已经有了对应的实现. 如果没有, 可以尝试自己实现 (但这会十分麻烦), 或者尝试在 Mathlib 中寻找相近的算子进行替代. 
+                    \item 进行形式化时, 可以先进行引理分割, 先使用 \texttt{\color{red}sorry} 占位符勾勒大体的证明框架, 再交由组员分工完成各个部分的证明. 
+                \end{enumerate}
+            \end{prj}
+
+            \begin{prj}
+                {数学问题形式化}
+                请选择一个比较前沿的数学问题, 表示出其所涉及的各个数学概念的定义, 找到它们在 Mathlib 中的实现, 或是借助 Mathlib 中已有的概念自己完成定义链条, 勾勒一个定理库的大致框架. 不需要完成完整的形式化证明, 但可以对一些关键的性质或是引理给出证明. 
+
+                以下建议供参考: 
+                \begin{enumerate}
+                    \item 不要选择过于复杂的数学问题. 与前一个课题类似, 如果涉及的理论过于复杂, 可能会导致形式化的困难. 
+                    \item 如果你选择形式化 Goldbach 猜想之类表示十分初等的问题, 还是建议附带完整的数学证明. 
+                \end{enumerate}
+            \end{prj}
+
+            \begin{prj}
+                {Mathlib 学员}
+                Mathlib 库为了确保实用性, 许多数学概念都力求保证其泛用性. 但这也导致了许多数学概念的处理十分复杂, 甚至有些处理方式与数学学习者通常的直觉相去甚远, 让 Lean 的学习和使用成本都十分高昂, 也就很难让 Lean 服务于一般的数学教学和研究. 但 Lean 原本是一个十分强大的工具, 不应完全被限制在现有 Mathlib 库的框架之内. 选择一段数学理论框架, 例如借助 Mathlib 中已有的实数概念, 用简单的 $\epsilon-\delta$ 语言描述数学分析等学科, 不妨尝试在不引入过于抽象的代数和拓扑工具的情况下形式化极限及函数连续性等简单概念, 让 Lean 融入到本科生的数学学习当中. 
+            \end{prj}
+
+            \begin{prj}
+                {物理形式化}
+                尝试将一些简单的物理学概念形式化为数学对象. 这会是一个比较有挑战性的课题, 因为从零开始构造对象需要大量运用归纳类型, 需要对待形式化领域的对象有很清晰的理解. 
+
+                以下建议供参考: 
+                \begin{enumerate}
+                    \item Physics in Lean 项目是一个正在进行的物理学形式化项目, 也许可以提供一些灵感. 
+                    \item 不妨从简单的概念框架开始, 例如以简单的牛顿力学作一个初步的尝试. 
+                \end{enumerate}
+            \end{prj}
+
+            \begin{prj}
+                {其他任何你想借助形式化工具做的小组课题! }
+                五子棋, 围棋, 红石电路, 三国杀... 都可以, 不过一定把握好复杂度, 不要整太难了做不出来. 
+            \end{prj}
+
+        \subsubsection{个人课题}
+            
+            \begin{prj}
+                {Mathlib 文档整理}
+                选择一个 Mathlib 文件, 用自然语言阐释各个条目的内容, 整理成 NL-FL 平行的 LaTeX 文档. 
+            \end{prj}
+
+            \begin{prj}
+                {(专题二) 数值代数理论框架蓝图}
+                为专题二数值代数学科的形式化做准备. 
+            \end{prj}
+
+\end{document}
