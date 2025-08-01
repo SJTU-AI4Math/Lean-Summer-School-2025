@@ -1,0 +1,738 @@
+% font packages
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\DeclareFontEncoding{LS2}{}{\noaccents@}
+\DeclareFontSubstitution{LS2}{stix}{m}{n}
+\DeclareSymbolFont{largesymbolsSTIX}{LS2}{stixex}{m}{n}
+\DeclareMathDelimiter{\lBrace}{\mathopen}{largesymbolsSTIX}{"E8}{largesymbolsSTIX}{"0E}
+\DeclareMathDelimiter{\rBrace}{\mathclose}{largesymbolsSTIX}{"E9}{largesymbolsSTIX}{"0F}
+
+% margin
+\usepackage{geometry}
+\geometry{
+    paper =a4paper,
+    top =3cm,
+    bottom =3cm,
+    left=2cm,
+    right =2cm
+}
+\linespread{1.2}
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy} % 使用fancy页眉页脚样式
+
+\fancyhf{}
+
+% \fancyhead[L]{\leftmark} % 左页眉
+% \fancyhead[C]{AI4MATH} % 中页眉
+% \fancyhead[R]{\thepage} % 右页眉
+% \fancyfoot[C]{上海交通大学\,\,\,数学科学学院} % 中页脚
+
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% more math operators' support
+\usepackage{physics}
+
+% Boldface
+\usepackage{bm}
+
+% Tikz
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+% Gaussian Elimination
+\usepackage{gauss}
+
+% Commutative Graph
+\usepackage[all]{xy}
+
+% Comment
+\usepackage{comment}
+
+% Colors
+\usepackage{xcolor}
+
+% 文字颜色的命令
+\newcommand{\tc}[4][white]{{\fcolorbox{#1}{#2}{\textcolor{#3}{#4}}}} % 此命令接受四个参数，第一个参数为边框颜色，默认为白色，第二个参数为文字背景颜色，第三个参数为文字颜色，第四个参数为文字内容。如：\tc[green]{blue}{lime}{Hello,world!}
+
+% Reference support
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan
+} % 请在此处自定义链接的颜色，相当于\textcolor
+
+% Info
+\title{Title}
+\author{Fulcrum4Math}
+\date{\today}
+
+% General
+\DeclareMathOperator{\N}{\mathbb{N}}                    % Set of Natural Numbers
+\DeclareMathOperator{\Z}{\mathbb{Z}}                    % Set of Integers
+\DeclareMathOperator{\Q}{\mathbb{Q}}                    % Set of Rational Numbers
+\DeclareMathOperator{\R}{\mathbb{R}}                    % Set of Real Numbers
+\DeclareMathOperator{\C}{\mathbb{C}}                    % Set of Complex Numbers
+
+\DeclareMathOperator{\Id}{Id}                           % Identity
+
+\DeclareMathOperator{\Ker}{Ker}                         % Kernel of a Homomorphism ($\ker$ is included in package amsmath)
+\DeclareMathOperator{\Image}{Im}                        % Image of a mapping
+
+% Mathematical Logic
+\DeclareMathOperator{\true}{\mathbb{T}}                    % Tautology
+\DeclareMathOperator{\false}{\mathbb{F}}                    % Contradictory Formula
+% Set Theory
+\DeclareMathOperator{\PP}{\mathcal{P}}                  % Power Sets
+\DeclareMathOperator{\card}{card}                       % Cardinality
+
+% Category Theory
+\DeclareMathOperator{\Cat}{\mathcal{C}}                 % Category
+
+\DeclareMathOperator{\Hom}{Hom}                         % Set of Homomorphisms
+\DeclareMathOperator{\End}{End}                         % Set of Endomorphisms
+\DeclareMathOperator{\Aut}{Aut}                         % Set of Automorphisms
+\DeclareMathOperator{\Isom}{Isom}                       % Set of Isomorphisms
+
+\DeclareMathOperator{\Ob}{Ob}                           % Objects of a Category
+\DeclareMathOperator{\Mor}{Mor}                         % Morphisms of a Category
+
+% Abstract Algebra
+
+\DeclareMathOperator{\stab}{stab}
+
+% Topology
+\DeclareMathOperator{\T}{\mathcal{T}}                   % Topology
+
+\DeclareMathOperator{\intr}{int}                        % Interior
+\DeclareMathOperator{\cl}{cl}                           % Closure
+
+\DeclareMathOperator{\U}{\overset{\circ}{\mathit{U}}}   % Deleted Neighbourhood
+
+% Linear Algebra
+
+% \rank is included in package physics.
+% \tr is included in package physics.
+
+\DeclareMathOperator{\K}{\mathbb{K}}                    % Number Field
+\DeclareMathOperator{\F}{\mathbb{F}}                    % Number Field (F)
+
+\DeclareMathOperator{\diag}{\text{diag}}                % Diagonal Matrix
+\DeclareMathOperator{\al}{\bm\alpha}                    % Boldfaced vector alpha
+\DeclareMathOperator{\bt}{\bm\beta}                     % Boldfaced vector beta
+\DeclareMathOperator{\x}{\bm{x}}                        % Boldfaced vector x
+\DeclareMathOperator{\0}{\mathbf{0}}                    % Boldfaced vector x
+
+\newcommand{\Jd}[2]{\mathrm{J}_{#1}{(#2)}}              % Jordan Blocks
+
+% \DeclareMathOperator{\A}{\bm{A}}                    % Boldfaced matrix A
+% \DeclareMathOperator{\B}{\bm{B}}                    % Boldfaced matrix B
+% \DeclareMathOperator{\Cc}{\bm{C}}                   % Boldfaced matrix C
+
+\DeclareMathOperator{\CCol}{Col}                        % Column Space
+\DeclareMathOperator{\RRow}{Row}                        % Row Space
+\DeclareMathOperator{\Null}{Null}                       % Null Space
+\DeclareMathOperator{\rmT}{\mathrm{T}}                  % Transpose
+
+\newcommand{\spn}{\mathrm{span}\text{ }}             % Span
+% The original command `\span` leads to the environment `align` misdirected.
+
+\DeclareMathOperator{\adj}{adj}                         % adj Matrix
+
+\newcommand{\GL}[2]{\mathrm{GL}_{#1}(#2)}               % General Linear Group
+\newcommand{\SL}[2]{\mathrm{SL}_{#1}(#2)}               % Special Linear Group
+
+\DeclareMathOperator{\lcm}{lcm}                         % LCM
+
+\newcommand{\<}{\langle}                                
+\renewcommand{\>}{\rangle}                              % These two for ordinary Hilbert Inner Products <x,y>
+\newcommand{\inprod}[2]{\<#1,#2\>}    % Using $\expval{#1}$ (Included in package physics) can replace \<#1\>.
+\newcommand{\ocinterval}[2]{\left(#1,#2\right]}
+\newcommand{\cointerval}[2]{\left[#1,#2\right)}
+\newcommand{\ccinterval}[2]{\left[#1,#2\right]}
+\newcommand{\oointerval}[2]{\left(#1,#2\right)}
+
+% Mathematical Analysis
+
+\DeclareMathOperator*{\ulim}{\overline{\lim}}
+\DeclareMathOperator*{\llim}{\underline{\lim}}
+\newcommand{\diff}[3]{\left. #1 \right|_{#2}^{#3}}    % This command can be replaced by $\eval{#1}_{#2}^{#3}$ in package physics.
+
+\newcommand{\Ball}[2]{\mathcal{B}\left(#1,#2\right)}	% Open Ball
+
+% Theorem template below copied from https://zhuanlan.zhihu.com/p/763738880
+
+% ————————————————————————————————————自定义颜色————————————————————————————————————
+\definecolor{dfn_green1}{RGB}{0, 156, 39} % 深绿
+\definecolor{dfn_green2}{RGB}{214, 254, 224} % 浅绿
+
+\definecolor{thm_blue1}{RGB}{0, 91, 156} % 深蓝
+\definecolor{thm_blue2}{RGB}{218, 240, 255} % 浅蓝
+
+\definecolor{ppt_pink1}{RGB}{172, 0, 175} % 深粉
+\definecolor{ppt_pink2}{RGB}{255, 237, 255} % 浅粉
+
+\definecolor{crl_orange1}{RGB}{225, 124, 0} % 深橙
+\definecolor{crl_orange2}{RGB}{255, 235, 210} % 浅橙
+
+\definecolor{xmp_purple1}{RGB}{119, 0, 229} % 深紫
+\definecolor{xmp_purple2}{RGB}{239, 223, 255} % 浅紫
+
+\definecolor{cxmp_red1}{RGB}{211, 0, 35} % 深红
+\definecolor{cxmp_red2}{RGB}{255, 214, 220} % 浅红
+
+\definecolor{prf_grey1}{RGB}{120, 120, 120} % 深灰
+\definecolor{prf_grey2}{RGB}{233, 233, 233} % 浅灰
+
+\definecolor{axm_yellow1}{RGB}{192, 192, 0} % 深黄
+\definecolor{axm_yellow2}{RGB}{255, 255, 172} % 浅黄
+
+% 将RGB换为rgb，颜色数值取值范围改为0到1
+% ————————————————————————————————————自定义颜色————————————————————————————————————
+
+% ————————————————————————————————————盒子设置————————————————————————————————————
+
+\usepackage{tcolorbox} % 盒子效果
+\tcbuselibrary{most} % tcolorbox宏包的设置，详见宏包说明文档
+
+% tolorbox提供了tcolorbox环境，其格式如下：
+% 第一种格式：\begin{tcolorbox}[colback=⟨背景色⟩, colframe=⟨框线色⟩, arc=⟨转角弧度半径⟩, boxrule=⟨框线粗⟩]   \end{tcolorbox}
+% 其中设置arc=0mm可得到直角；boxrule可换为toprule/bottomrule/leftrule/rightrule可分别设置对应边宽度，但是设置为0mm时仍有细边，若要绘制单边框线推荐使用第二种格式
+% 方括号内加上title=⟨标题⟩, titlerule=⟨标题背景线粗⟩, colbacktitle=⟨标题背景线色⟩可为盒子加上标题及其背景线
+% 第二种格式：\begin{tcolorbox}[enhanced, colback=⟨背景色⟩, boxrule=0pt, frame hidden, borderline={⟨框线粗⟩}{⟨偏移量⟩}{⟨框线色⟩}]   {\end{tcolorbox}}
+% 将borderline换为borderline east/borderline west/borderline north/borderline south可分别为四边添加框线，同一边可以添加多条
+% 加入breakable属性可以支持盒子拆分到两页中。
+% 偏移量为正值时，框线向盒子内部移动相应距离，负值反之
+
+\newenvironment{dfn_box}{
+    \begin{tcolorbox}[enhanced, colback=dfn_green2, boxrule=0pt, frame hidden,
+        borderline west={0.7mm}{0.1mm}{dfn_green1},breakable]
+    }
+    {\end{tcolorbox}}
+    
+\newenvironment{thm_box}{
+    \begin{tcolorbox}[enhanced, colback=thm_blue2, boxrule=0pt, frame hidden,
+        borderline west={0.7mm}{0.1mm}{thm_blue1},breakable]
+    }
+    {\end{tcolorbox}}
+    
+\newenvironment{ppt_box}{
+    \begin{tcolorbox}[enhanced, colback=ppt_pink2, boxrule=0pt, frame hidden,
+        borderline west={0.7mm}{0.1mm}{ppt_pink1},breakable]
+    }
+    {\end{tcolorbox}}
+    
+\newenvironment{crl_box}{
+    \begin{tcolorbox}[enhanced, colback=crl_orange2, boxrule=0pt, frame hidden,
+        borderline west={0.7mm}{0.1mm}{crl_orange1},breakable]
+    }
+    {\end{tcolorbox}}
+    
+\newenvironment{xmp_box}{
+    \begin{tcolorbox}[enhanced, colback=xmp_purple2, boxrule=0pt, frame hidden,
+        borderline west={0.7mm}{0.1mm}{xmp_purple1},breakable]
+    }
+    {\end{tcolorbox}}
+    
+\newenvironment{cxmp_box}{
+    \begin{tcolorbox}[enhanced, colback=cxmp_red2, boxrule=0pt, frame hidden,
+        borderline west={0.7mm}{0.1mm}{cxmp_red1},breakable]
+    }
+    {\end{tcolorbox}}
+    
+\newenvironment{prf_box}{
+    \begin{tcolorbox}[enhanced, colback=prf_grey2, boxrule=0pt, frame hidden,
+        borderline west={0.7mm}{0.1mm}{prf_grey1},breakable]
+    }
+    {\end{tcolorbox}}
+    
+\newenvironment{axm_box}{
+    \begin{tcolorbox}[enhanced, colback=axm_yellow2, boxrule=0pt, frame hidden,
+        borderline west={0.7mm}{0.1mm}{axm_yellow1},breakable]
+    }
+    {\end{tcolorbox}}
+
+% tcolorbox宏包还提供了\tcbox指令，用于生成行内盒子，可制作高光效果
+
+        % \newcommand{\hl}[1]{
+        %     \tcbox[on line, arc=0pt, colback=hlan!5!white, colframe=hlan!5!white, boxsep=1pt, left=1pt, right=1pt, top=1.5pt, bottom=1.5pt, boxrule=0pt]
+        % {\bfseries \color{hlan}#1}}
+
+% 其中on line将盒子放置在本行（缺失会跳到下一行），boxsep用于控制文本内容和边框的距离，left、right、top、bottom则分别在boxsep的参数的基础上分别控制四边距离
+
+% ————————————————————————————————————盒子设置————————————————————————————————————
+
+% ————————————————————————————————————定理类环境设置————————————————————————————————————
+\newtheoremstyle{MyStyle}{0pt}{}{}{\parindent}{\bfseries}{}{1em}{} % 定义新定理风格。格式如下：
+%\newtheoremstyle{⟨风格名⟩}
+%                {⟨上方间距⟩} % 若留空，则使用默认值
+%                {⟨下方间距⟩} % 若留空，则使用默认值
+%                {⟨主体字体⟩} % 如 \itshape
+%                {⟨缩进长度⟩} % 若留空，则无缩进；可以使用 \parindent 进行正常段落缩进
+%                {⟨定理头字体⟩} % 如 \bfseries
+%                {⟨定理头后的标点符号⟩} % 如点号、冒号
+%                {⟨定理头后的间距⟩} % 不可留空，若设置为 { }，则表示正常词间间距；若设置为 {\xnewline}，则环境内容开启新行
+%                {⟨定理头格式指定⟩} % 一般留空
+% 定理风格决定着由 \newtheorem 定义的环境的具体格式，有三种定理风格是预定义的，它们分别是：
+% plain: 环境内容使用意大利斜体，环境上下方添加额外间距
+% definition: 环境内容使用罗马正体，环境上下方添加额外间距
+% remark: 环境内容使用罗马正体，环境上下方不添加额外间距
+
+\theoremstyle{MyStyle} % 设置定理风格 
+
+% 定义定义环境，格式为\newtheorem{⟨环境名⟩}{⟨定理头文本⟩}[⟨上级计数器⟩]或\newtheorem{⟨环境名⟩}[⟨共享计数器⟩]{⟨定理头文本⟩}，其变体\newtheorem*不带编号
+
+% 以下的每个环境接受参数，请按顺序填入：
+% #1 环境标题（中文）
+
+\makeatletter
+% 嵌套环境时，如果紧接着 itemize 等环境，直接换行会换两次，应该使用 \leavevmode
+\newcommand{\xnewline}{%
+    \@ifnextchar\begin{\leavevmode}{\textbf{}\\}%
+}
+\newcommand{\xxnewline}{%
+    \@ifnextchar\begin{\leavevmode}{}%
+}
+\makeatother
+
+\newtheorem{axiom}{Axiom}[section]
+\newenvironment{axm}[1]
+{
+    \begin{axm_box}
+        \begin{axiom}
+            \textbf{#1}
+            \xnewline
+}
+{
+        \end{axiom}
+    \end{axm_box}
+}
+
+\newtheorem{definition}{Definition}[subsection]
+\newenvironment{dfn}[1]
+{
+    \begin{dfn_box}
+        \begin{definition}
+            \textbf{#1}
+            \xnewline
+}
+{
+        \end{definition}
+    \end{dfn_box}
+}
+
+\newtheorem{concept}[definition]{Concept}
+\newenvironment{cpt}[1]
+{
+    \begin{dfn_box}
+        \begin{concept}
+            \textbf{#1}
+            \xnewline
+}
+{
+        \end{concept}
+    \end{dfn_box}
+}
+
+\newtheorem{syntax}[definition]{Syntax}
+\newenvironment{syn}[1]
+{
+    \begin{thm_box}
+        \begin{syntax}
+            \textbf{#1}
+            \xnewline
+}
+{
+        \end{syntax}
+    \end{thm_box}
+}
+
+\newtheorem{theorem}[definition]{Theorem}
+\newenvironment{thm}[1]
+{
+    \begin{thm_box}
+        \begin{theorem}
+            \textbf{#1}
+            \xnewline
+}
+{
+        \end{theorem}
+    \end{thm_box}
+}
+
+\newtheorem{mytactic}{Tactic}
+\newenvironment{tactic}[1]
+{
+    \begin{thm_box}
+        \begin{mytactic}
+            \textbf{#1}
+            \xnewline
+}
+{
+        \end{mytactic}
+    \end{thm_box}
+}
+
+\newtheorem{myvariation}{Tactic Variant}[definition]
+\newenvironment{tacticvar}[1]
+{
+    \begin{ppt_box}
+        \begin{myvariation}
+            \textbf{#1}
+            \xnewline
+}
+{
+        \end{myvariation}
+    \end{ppt_box}
+}
+
+\newtheorem{example}{Example}[subsection]
+\newenvironment{xmp}[1]
+{
+    \begin{xmp_box}
+        \begin{example}
+            \textbf{#1}
+            \xnewline
+}
+{
+        \end{example}
+    \end{xmp_box}
+}
+
+\newtheorem{cexample}{Counterexample}[subsection]
+\newenvironment{cxmp}[1]
+{
+    \begin{cxmp_box}
+        \begin{cexample}
+            \textbf{#1}
+            \xnewline
+}
+{
+        \end{cexample}
+    \end{cxmp_box}
+}
+
+\newtheorem*{myproof}{Proof. \xnewline}
+\newenvironment{prf}{\begin{prf_box}\begin{myproof}}{\end{myproof}\end{prf_box}}
+
+\newtheorem{project}{Project}
+\newenvironment{prj}[1]
+{
+    \begin{xmp_box}
+        \begin{project}
+            \textbf{#1}
+            \xnewline
+}
+{
+        \end{project}
+    \end{xmp_box}
+}
+
+\newtheorem*{remark}{Remark}
+\newenvironment{rmk}[1]
+{
+    \begin{remark}
+        \xxnewline
+}
+{
+    \end{remark}
+}
+
+\newtheorem*{Exercise}{Exercise}
+\newenvironment{exercise}[1]
+{
+    \begin{Exercise}
+        \xxnewline
+}
+{
+    \end{Exercise}
+}
+
+\usepackage{listings}
+\newcommand{\smallsec}[1]{\paragraph{#1.}}
+\lstset{
+    basicstyle = \ttfamily,
+}
+
+% Define Colors: 
+\definecolor{leanblue}{RGB}{0,0,255}
+\colorlet{keyword}{leanblue}
+\colorlet{punct}{leanblue}
+
+\definecolor{sorry}{RGB}{255,0,0}
+\definecolor{comment}{RGB}{0,128,0}
+\definecolor{string}{RGB}{163,21,21}
+\definecolor{num}{RGB}{9,134,88}
+
+\definecolor{thname}{RGB}{121,94,38}
+
+\definecolor{background}{HTML}{EEEEEE}
+\definecolor{delim}{RGB}{20,105,176}
+
+\newcommand*{\lean}[1]{\texttt{\color{blue}#1}}
+
+\lstdefinelanguage{lean}{
+    % Define Keywords: 
+    alsoletter = {\#,?,',.},
+    keywords = {
+        import, 
+        end, 
+        namespace, 
+        section, 
+        open, 
+        variable, 
+        universe, 
+        Prop, 
+        Type, 
+        Sort, 
+        % Declarations: 
+        protected, 
+        private, 
+        extern, 
+        local, 
+        macro_rules, 
+        attribute, 
+        where, 
+        inductive, 
+        structure, 
+        class, 
+        instance, 
+        def, 
+        axiom, 
+        example, 
+        theorem, 
+        lemma, 
+        fun, 
+        by, 
+        % Basics: 
+        \#check, 
+        \#leansearch, 
+        \#eval, 
+        \#print, 
+        % Tactics: 
+        exact?, 
+        apply?, 
+        exact, 
+        apply, 
+        intro, 
+        intros, 
+        rintro, 
+        constructor, 
+        rcases, 
+        with, 
+        exists, 
+        obtain, 
+        use, 
+        left, 
+        right, 
+        match, 
+        cases', 
+        cases, 
+        case, 
+        by\_cases, 
+        contradiction, 
+        by\_contra, 
+        contrapose, 
+        contrapose!, 
+        induction, 
+        rec, 
+        assumption, 
+        any_goals, 
+        all_goals, 
+        first, 
+        focus, 
+        split, 
+        repeat, 
+        revert, 
+        generalize, 
+        refine, 
+        rename, 
+        rename_i, 
+        % Highly automatic tactics:
+        simp, 
+        linarith, 
+        ring, 
+        % Others: 
+        rfl, 
+        symm, % ???
+        calc, 
+        unfold, 
+        have, 
+        let, 
+        rewrite, 
+        rw, 
+        at, 
+        change, 
+        show, 
+        show_term, 
+        % Boolean
+        true,
+        false,
+    }, 
+    keywords = [2]{sorry}, 
+    %
+    numbers=left,
+    numberstyle=\color{num},
+    %
+    % morecomment = [l]{--},
+    moredelim=[l][\color{comment}]{--}, % morecomment -> moredelim, so that Unicode characters can be used in comments. 
+    moredelim=[is][\color{thname}]{\#tm\{}{\}}, 
+    morecomment = [s][\color{comment}]{/-}{-/},
+    commentstyle = \color{comment}, 
+    %
+    stringstyle = \color{string}, 
+    %
+    stepnumber=1,
+    numbersep=8pt,
+    showstringspaces=false,
+    breaklines=true,
+    frame=lines,
+    backgroundcolor=\color{background},
+    literate=
+    % Keywords
+        {th\_name}{{{\color{thname}th\_name}}}{7}
+    % Math Symbols
+        {ℕ}{{\ensuremath{\mathbb{N}}}}{1}
+        {ℤ}{{\ensuremath{\mathbb{Z}}}}{1}
+        {ℝ}{{\ensuremath{\mathbb{R}}}}{1}
+        {ℚ}{{\ensuremath{\mathbb{Q}}}}{1}
+        {ℂ}{{\ensuremath{\mathbb{C}}}}{1}
+        {∩}{{\ensuremath{\cap}}}{1}
+        {∪}{{\ensuremath{\cup}}}{1}
+        {⊂}{{\ensuremath{\subseteq}}}{1}
+        {⊆}{{\ensuremath{\subseteq}}}{1}
+        {⊄}{{\ensuremath{\nsubseteq}}}{1}
+        {⊈}{{\ensuremath{\nsubseteq}}}{1}
+        {⊃}{{\ensuremath{\supseteq}}}{1}
+        {⊇}{{\ensuremath{\supseteq}}}{1}
+        {⊅}{{\ensuremath{\nsupseteq}}}{1}
+        {⊉}{{\ensuremath{\nsupseteq}}}{1}
+        {∈}{{\ensuremath{\in}}}{1}
+        {∉}{{\ensuremath{\notin}}}{1}
+        {∋}{{\ensuremath{\ni}}}{1}
+        {∌}{{\ensuremath{\notni}}}{1}
+        {∅}{{\ensuremath{\emptyset}}}{1}
+        {∫}{{\ensuremath{\int}}}{1}
+        {∑}{{\ensuremath{\mathrm{\Sigma}}}}{1}
+        {Π}{{\ensuremath{\mathrm{\Pi}}}}{1}
+        {≤}{{\ensuremath{\leq}}}{1}
+        {≥}{{\ensuremath{\geq}}}{1}
+        {≠}{{\ensuremath{\neq}}}{1}
+        {≈}{{\ensuremath{\approx}}}{1}
+        {≡}{{\ensuremath{\equiv}}}{1}
+        {≃}{{\ensuremath{\simeq}}}{1}
+    % Greek Letters lowercase
+        {α}{{\ensuremath{\mathrm{\alpha}}}}{1}
+        {β}{{\ensuremath{\mathrm{\beta}}}}{1}
+        {γ}{{\ensuremath{\mathrm{\gamma}}}}{1}
+        {δ}{{\ensuremath{\mathrm{\delta}}}}{1}
+        {ε}{{\ensuremath{\mathrm{\varepsilon}}}}{1}
+        {ζ}{{\ensuremath{\mathrm{\zeta}}}}{1}
+        {η}{{\ensuremath{\mathrm{\eta}}}}{1}
+        {θ}{{\ensuremath{\mathrm{\theta}}}}{1}
+        {ι}{{\ensuremath{\mathrm{\iota}}}}{1}
+        {κ}{{\ensuremath{\mathrm{\kappa}}}}{1}
+        {μ}{{\ensuremath{\mathrm{\mu}}}}{1}
+        {ν}{{\ensuremath{\mathrm{\nu}}}}{1}
+        {ξ}{{\ensuremath{\mathrm{\xi}}}}{1}
+        {π}{{\ensuremath{\mathrm{\mathnormal{\pi}}}}}{1}
+        {ρ}{{\ensuremath{\mathrm{\rho}}}}{1}
+        {σ}{{\ensuremath{\mathrm{\sigma}}}}{1}
+        {τ}{{\ensuremath{\mathrm{\tau}}}}{1}
+        {φ}{{\ensuremath{\mathrm{\varphi}}}}{1}
+        {χ}{{\ensuremath{\mathrm{\chi}}}}{1}
+        {ψ}{{\ensuremath{\mathrm{\psi}}}}{1}
+        {ω}{{\ensuremath{\mathrm{\omega}}}}{1}
+    % Greek Letters UPPERCASE
+        {Γ}{{\ensuremath{\mathrm{\Gamma}}}}{1}
+        {Δ}{{\ensuremath{\mathrm{\Delta}}}}{1}
+        {Θ}{{\ensuremath{\mathrm{\Theta}}}}{1}
+        {Λ}{{\ensuremath{\mathrm{\Lambda}}}}{1}
+        {Σ}{{\ensuremath{\mathrm{\Sigma}}}}{1}
+        {Φ}{{\ensuremath{\mathrm{\Phi}}}}{1}
+        {Ξ}{{\ensuremath{\mathrm{\Xi}}}}{1}
+        {Ψ}{{\ensuremath{\mathrm{\Psi}}}}{1}
+        {Ω}{{\ensuremath{\mathrm{\Omega}}}}{1}
+    % Arrows
+        {↦}{{\ensuremath{\mapsto}}}{1}
+        {←}{{\ensuremath{\leftarrow}}}{1}
+        {<-}{{\ensuremath{\leftarrow}}}{1}
+        {→}{{\ensuremath{\rightarrow}}}{1}
+        {->}{{\ensuremath{\rightarrow}}}{1}
+        {↔}{{\ensuremath{\leftrightarrow}}}{1}
+        {<->}{{\ensuremath{\leftrightarrow}}}{1}
+        {⇒}{{\ensuremath{\Rightarrow}}}{1}
+        {⟹}{{\ensuremath{\Longrightarrow}}}{1}
+        {⇐}{{\ensuremath{\Leftarrow}}}{1}
+        {⟸}{{\ensuremath{\Longleftarrow}}}{1}
+        {Σ}{{\ensuremath{\Sigma}}}{1}
+        {Π}{{\ensuremath{\Pi}}}{1}
+        {∀}{{\ensuremath{\forall}}}{1}
+        {∃}{{\ensuremath{\exists}}}{1}
+        {λ}{{\ensuremath{\mathrm{\lambda}}}}{1}
+        {∧}{{\ensuremath{\wedge}}}{1}
+        {∨}{{\ensuremath{\vee}}}{1}
+        {¬}{{\ensuremath{\neg}}}{1}
+        {⊢}{{\ensuremath{\vdash}}}{1}
+        {‖}{{\ensuremath{\|}}}{1}
+    % subscripts
+        {₁}{{\ensuremath{_1}}}{1}
+        {₂}{{\ensuremath{_2}}}{1}
+        {₃}{{\ensuremath{_3}}}{1}
+        {₄}{{\ensuremath{_4}}}{1}
+        {₅}{{\ensuremath{_5}}}{1}
+        {₆}{{\ensuremath{_6}}}{1}
+        {₇}{{\ensuremath{_7}}}{1}
+        {₈}{{\ensuremath{_8}}}{1}
+        {₉}{{\ensuremath{_9}}}{1}
+        {₀}{{\ensuremath{_0}}}{1}
+        {ᵢ}{{\ensuremath{_i}}}{1}
+        {ⱼ}{{\ensuremath{_j}}}{1}
+        {ₐ}{{\ensuremath{_a}}}{1}
+        {⁻¹}{{\ensuremath{^{-1}}}}{1}
+        {¹}{{\ensuremath{^1}}}{1}
+        {ₙ}{{\ensuremath{_n}}}{1}
+        {ₘ}{{\ensuremath{_m}}}{1}
+        {ₚ}{{\ensuremath{_p}}}{1}
+    % Others
+        {↑}{{\ensuremath{\uparrow}}}{1}
+        {↓}{{\ensuremath{\downarrow}}}{1}
+        {⊢}{{\ensuremath{\vdash}}}{1}
+        {|-}{{\ensuremath{\vdash}}}{1}
+        {⊥}{{\ensuremath{\perp}}}{1}
+        {∞}{{\ensuremath{\infty}}}{1}
+        {∂}{{\ensuremath{\partial}}}{1}
+        {√}{{\ensuremath{\sqrt}}}{1}
+        {∘}{{\ensuremath{\circ}}}{1}
+        {×}{{\ensuremath{\times}}}{1}
+        {∆}{{\ensuremath{\triangle}}}{1}
+        {⟨}{{\ensuremath{\color{leanblue}\langle}}}{1}
+        {⟩}{{\ensuremath{\color{leanblue}\rangle}}}{1}
+        {⦃}{{\ensuremath{\color{leanblue}\lBrace}}}{1}
+        {⦄}{{\ensuremath{\color{leanblue}\rBrace}}}{1}
+        {ℒ}{{\ensuremath{\mathscr{L}}}}{1}
+        {·}{{\ensuremath{\cdot}}}{1}
+    % Supplement
+        {`}{\textasciigrave{}}{1}
+        {'}{\textquotesingle{}}{1},
+        % {⊤}{{\ensuremath{\top}}}1
+}
+
+\lstdefinestyle{lean}{
+    language=lean,
+    numbers=none, 
+    keywordstyle=\color{leanblue},
+    keywordstyle=[2]\color{sorry},
+    % frame=none,
+    backgroundcolor=\color{white},
+    columns=fixed 
+}
+
+\newcommand{\Goal}{\texttt{\,\color{leanblue}\ensuremath{\vdash}\,}}
